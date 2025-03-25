@@ -1,16 +1,27 @@
-import { useEffect, useState } from "react";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Layout from './components/Layout';
+import Home from './pages/Home';
+import Projects from './pages/Projects';
+import Resume from './pages/Resume';
+import Contact from './pages/Contact';
+import PageNotFound from './pages/PageNotFound';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Layout />,
+    errorElement: <PageNotFound />,
+    children: [
+      { path: '', element: <Home /> },
+      { path: 'projects', element: <Projects /> },
+      { path: 'contact', element: <Contact /> },
+      { path: 'resume', element: <Resume /> },
+    ],
+  },
+]);
 
 function App() {
-  const [data, setData] = useState<string>("");
-
-  useEffect(() => {
-    fetch("http://localhost:3001/")
-      .then((res) => res.text())
-      .then((data) => setData(data))
-      .catch((err) => console.error("Error fetching data:", err));
-  }, []);
-
-  return <div className="text-3xl font-bold underline">{data ? <h1>{data}</h1> : <p>Loading...</p>}</div>;
+  return <RouterProvider router={router} />;
 }
 
 export default App;

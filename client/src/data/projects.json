@@ -1,0 +1,50 @@
+[
+        {
+        "id": 1,
+        "title": "Weather Dashboard",
+        "description": "Web application designed for travelers to easily access and view weather conditions for multiple cities",
+        "technologies": ["HTML", "CSS", "JavaScript", "OpenWeather API"],
+        "projectLink": "https://weather-dashboard-k6u9.onrender.com/",
+        "codeLink": "https://github.com/williamscodigo/weather-dashboard"
+        },
+        {
+        "id": 2,
+        "title": "Memory Game",
+        "description": "Simple memory game that uses Web Development Technology logos, so that players can not only enjoy but also learn while playing",
+        "technologies": ["HTML", "CSS", "JavaScript"],
+        "projectLink": "https://williamscodigo.github.io/memory-game/",
+        "codeLink": "https://github.com/williamscodigo/memory-game"
+        },
+        {
+        "id": 3,
+        "title": "Employee Tracker CMS",
+        "description": "The Employee Tracker is a command-line application designed to simplify the management of a company's employee database.",
+        "technologies": ["JavaScript", "TypeScript", "Node.js", "PostgreSQL", "Inquirer.js"],
+        "projectLink": "",
+        "codeLink": "https://github.com/williamscodigo/employee-tracker-cms"
+        },
+        {
+        "id": 4,
+        "title": "Study Guide",
+        "description": "This study guide was create to help new student get familiar with basic concepts and keywords use in the field of web development. It contains notes on HTML, CSS, git, and JavaScript.",
+        "technologies": ["HTML", "CSS", "JavaScript"],
+        "projectLink": "https://williamscodigo.github.io/prework-study-guide/",
+        "codeLink": "https://github.com/williamscodigo/prework-study-guide"
+        },
+        {
+        "id": 5,
+        "title": "Readme Generator",
+        "description": "Generate professional readme file for your project",
+        "technologies": ["JavaScript", "Node.js", "Inquirer.js"],
+        "projectLink": "",
+        "codeLink": "https://github.com/williamscodigo/readme-generator"
+        },
+        {
+        "id": 6,
+        "title": "Vehicle Builder",
+        "description": "This Application prompts the user to either create a new vehicle or select an existing vehicle. After going through the creation or selection process, the user is able to perform certain actions with the selected vehicle. ",
+        "technologies": [ "JavaScript", "TypeScript", "Node.js", "Inquirer.js"],
+        "projectLink": "",
+        "codeLink": "https://github.com/williamscodigo/vehicle-builder"
+        }
+]
