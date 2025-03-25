@@ -1,6 +1,5 @@
 export interface FeedbackData {
-  id: number | null;
+  name: string | null;
   email: string | null;
-  feedbackType: string | null;
   feedback: string | null;
 }
