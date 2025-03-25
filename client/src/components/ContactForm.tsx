@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { processFeedback } from '../api/feedbackAPI';
 import consultationImage from "../assets/consultation.jpg";
 import { IoIosSend } from "react-icons/io";
 
 export default function ContactForm() {
-  const [values, setValues] = useState({
+  const [feedbackData, setFeedbackData] = useState({
     name: '',
     email: '',
     message: ''
@@ -11,24 +12,24 @@ export default function ContactForm() {
   const [isMessageSent, setIsMessageSent] = useState(false);
   const [error, setError] = useState("");
 
-  function handleSubmit(e: any) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     
     // Check if fields are filled
-    if (!values.name || !values.email || !values.message) {
+    if (!feedbackData.name || !feedbackData.email || !feedbackData.message) {
       setError("All fields are required.");
       return;
     }
 
     // Check for valid email format
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(values.email)) {
+    if (!emailPattern.test(feedbackData.email)) {
       setError("Please enter a valid email address.");
       return;
     }
 
     // Check message length
-    if (values.message.length >= 250) {
+    if (feedbackData.message.length >= 250) {
       setError("Message must be 250 characters or less.");
       return;
     }
@@ -37,12 +38,17 @@ export default function ContactForm() {
     setError("");
 
     //TODO: send feedback! to backend
-    setIsMessageSent(true);
+    try {
+      const data = await processFeedback(feedbackData);
+      //if data not falsy, meaning there was a response
+      if(data) setIsMessageSent(true);
+    } catch (err) {
+      console.error('Failed to process feedback', err);
+    }
 
-    console.log('Form submitted:', values);
 
     // Clear form fields after submission
-    setValues({
+    setFeedbackData({
       name: '',
       email: '',
       message: ''
@@ -54,7 +60,7 @@ export default function ContactForm() {
     }, 3000);
   }
 
-  function handleOnChange(e: any) {
+  function handleOnChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     const key = e.target.name;
     const value = e.target.value;
     
@@ -64,7 +70,7 @@ export default function ContactForm() {
       return;
     }
 
-    setValues(values => ({
+    setFeedbackData(values => ({
       ...values,
       [key]: value,
     }));
@@ -94,7 +100,7 @@ export default function ContactForm() {
                   type="text"
                   id="name"
                   name="name"
-                  value={values.name}
+                  value={feedbackData.name}
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 invalid:text-pink-600 valid:border-green-500"
                   placeholder="Name"
                   onChange={handleOnChange}
@@ -107,7 +113,7 @@ export default function ContactForm() {
                   type="email"
                   id="email"
                   name="email"
-                  value={values.email}
+                  value={feedbackData.email}
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 invalid:text-pink-600 valid:border-green-500"
                   placeholder="Email"
                   onChange={handleOnChange}
@@ -121,7 +127,7 @@ export default function ContactForm() {
               <textarea
                 id="message"
                 name="message"
-                value={values.message}
+                value={feedbackData.message}
                 rows={4}
                 maxLength={250}
                 className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 valid:border-green-500"
@@ -129,7 +135,7 @@ export default function ContactForm() {
                 placeholder="Write your message here! (Max 250 characters)"
                 required
               ></textarea>
-              <p className="text-xs text-gray-500 mt-1 text-right">{values.message.length}/250</p>
+              <p className="text-xs text-gray-500 mt-1 text-right">{feedbackData.message.length}/250</p>
             </div>
 
             <div className="mt-4">

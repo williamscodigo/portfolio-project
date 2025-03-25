@@ -1,28 +1,24 @@
 import type { FeedbackData } from '../interfaces/FeedbackData';
 
-
 const processFeedback = async (body: FeedbackData) => {
   try {
-    const response = await fetch('/api/feedback/', {
+    const response = await fetch('/api/feedback', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(body),
     });
-    const data = await response.json();
 
     if (!response.ok) {
-      throw new Error('invalid API response, check network tab!');
+      throw new Error(`Invalid API response: ${response.statusText}`);
     }
 
-    return data;
+    return await response.json();
   } catch (err) {
-    console.log('Error from Feedback Creation: ', err);
-    return Promise.reject('Could not create feedback');
+    console.error('Error from Feedback processing:', err);
+    return Promise.reject('Could not process feedback');
   }
 };
 
-export {
-  processFeedback,
-};
+export { processFeedback };

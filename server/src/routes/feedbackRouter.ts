@@ -6,13 +6,15 @@ const router = express.Router();
 // POST /feedback - process feedback
 router.post('/', async (req: Request, res: Response) => {
   try {
-    // const newFeedback = await Feedback.create(req.body);
-    // res.status(201).json(newFeedback);
-    //process feed back here, note: no database just send email with data
+    // Debugging: Log the received data
+    console.log("Data received on backend:", req.body);
 
-    //debugging line
-    if(req) res.status(201).json({msg: 'email sent successfully'});
-    
+    // Simulate feedback processing (e.g., sending an email)
+    // TODO: Implement email sending logic here
+
+    // Send a proper JSON response
+    res.status(201).json({ message: 'Feedback received successfully' });
+
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
   }

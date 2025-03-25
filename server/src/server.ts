@@ -1,5 +1,5 @@
 import express from "express";
-import routes from './routes/index.js';
+import { feedbackRouter } from './routes/feedbackRouter.js';
 import cors from "cors";
 import dotenv from "dotenv";
 
@@ -17,12 +17,16 @@ app.use(
   })
 );
 
-// Serves static files in the entire client's dist folder
+// Middleware to parse JSON requests
 app.use(express.json());
+
 app.use(express.urlencoded({ extended: true }));
+
+// Serves static files in the entire client's dist folder
 app.use(express.static('../client/dist'));
 
-app.use(routes);
+// Use the feedback route with `/api/feedback`
+app.use('/api/feedback', feedbackRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
