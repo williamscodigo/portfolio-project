@@ -14,7 +14,7 @@ export default function Home() {
       <h1 className="text-3xl font-bold mb-4 text-center md:text-left">Welcome to My Portfolio</h1>
       
       <h2 className="text-center md:text-left text-2xl font-medium mb-4 underline underline-offset-4 decoration-slate-900 dark:decoration-slate-500 decoration-4 opacity-50">About Me</h2>
-      <p className="mb-4 trackiing-wide leading-relaxed">Hello Real World!, My name is <span className='font-bold'>Jose W. Rivas</span> I am a passionate and dedicated learner that loves programming and solving complex problems. An individual that enjoys helping others understand difficult concepts. I have optained a bachelor degree in computer science which provided me with the foundational knowledge and experience in software creation and engineering. I learned about the different tools and techniques that are essential to design, create and maintain high quality and visually captivating applications.</p>
+      <p className="mb-4 trackiing-wide leading-relaxed">Hello Real World!, My name is <span className='font-bold'>Jose W. Rivas</span> I am a passionate and dedicated learner that loves programming and solving complex problems. An individual that enjoys helping others understand difficult concepts. I hold a bachelor's degree in Computer Science, equipping me with foundational knowledge and hands-on experience in software development, including different tools and techniques that are essential to design, create and maintain high-quality and visually captivating applications.</p>
     </section>
     <section className='mb-4'>
     <h2 className="text-center md:text-left text-2xl font-medium mb-4 underline underline-offset-4 decoration-slate-900 dark:decoration-slate-500  decoration-4 opacity-50">Highlight Projects</h2>
